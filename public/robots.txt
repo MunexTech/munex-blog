@@ -1,0 +1,22 @@
+# Robots.txt for munex.in
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://munex.in/sitemap-index.xml
+
+# Block AI training crawlers (optional - keeps content exclusive)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /

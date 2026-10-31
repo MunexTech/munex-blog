@@ -9,76 +9,226 @@ import Header from '../components/Header.astro';
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+
+// Extract category from title
+function getCategory(title: string): string {
+  const lowerTitle = title.toLowerCase();
+  if (lowerTitle.includes('ai') || lowerTitle.includes('chatgpt') || lowerTitle.includes('claude')) return 'AI Tools';
+  if (lowerTitle.includes('crm') || lowerTitle.includes('project management')) return 'Business';
+  if (lowerTitle.includes('website') || lowerTitle.includes('builder')) return 'Web Tools';
+  if (lowerTitle.includes('video') || lowerTitle.includes('conferencing')) return 'Communication';
+  if (lowerTitle.includes('productivity') || lowerTitle.includes('remote')) return 'Productivity';
+  if (lowerTitle.includes('vs')) return 'Comparison';
+  return 'Software';
+}
+
+const category = getCategory(title);
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
+  <head>
+    <BaseHead title={title} description={description} />
+    
+    {/* JSON-LD Schema Markup for SEO */}
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": title,
+      "description": description,
+      "datePublished": pubDate.toISOString(),
+      "dateModified": (updatedDate || pubDate).toISOString(),
+      "author": {
+        "@type": "Person",
+        "name": "Badal",
+        "url": "https://munex.in/about"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Munex",
+        "url": "https://munex.in",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://munex.in/favicon.svg"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": Astro.url.href
+      },
+      "articleSection": category,
+      "inLanguage": "en-US"
+    })} />
+  </head>
 
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{updatedDate && (
-								<div class="last-updated-on">
-									Last updated on <FormattedDate date={updatedDate} />
-								</div>
-							)}
-						</div>
-						<h1>{title}</h1>
-						<hr />
-					</div>
-					<slot />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
+  <body>
+    <Header />
+    
+    <main>
+      <article class="article">
+        <header class="article-header">
+          <div class="container-narrow">
+            <span class="category-label">{category}</span>
+            <h1 class="article-title">{title}</h1>
+            <div class="article-meta">
+              <FormattedDate date={pubDate} />
+              {updatedDate && (
+                <span class="updated">
+                  · Updated <FormattedDate date={updatedDate} />
+                </span>
+              )}
+            </div>
+          </div>
+        </header>
+
+        {heroImage && (
+          <div class="hero-image">
+            <div class="hero-image-container">
+              <Image 
+                width={1200} 
+                height={600} 
+                src={heroImage} 
+                alt={title} 
+                class="hero-img"
+              />
+            </div>
+          </div>
+        )}
+
+        <div class="article-content">
+          <div class="container-narrow prose">
+            <slot />
+          </div>
+        </div>
+
+        <footer class="article-footer">
+          <div class="container-narrow">
+            <hr class="footer-divider" />
+            <div class="footer-cta">
+              <p>Found this review helpful?</p>
+              <a href="/blog" class="back-link">← Browse more reviews</a>
+            </div>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
 </html>
+
+<style>
+  .article {
+    padding-bottom: var(--space-2xl);
+  }
+
+  .article-header {
+    padding: var(--space-3xl) 0 var(--space-xl);
+  }
+
+  .container-narrow {
+    max-width: var(--container-narrow);
+    margin: 0 auto;
+    padding: 0 var(--space-xl);
+  }
+
+  .category-label {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-md);
+  }
+
+  .article-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--black);
+    margin-bottom: var(--space-lg);
+    letter-spacing: -0.02em;
+  }
+
+  .article-meta {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+  }
+
+  .updated {
+    font-style: italic;
+  }
+
+  .hero-image {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .hero-image-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 var(--space-xl);
+  }
+
+  .hero-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .article-content {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .article-footer {
+    margin-top: var(--space-3xl);
+  }
+
+  .footer-divider {
+    border: none;
+    border-top: var(--border-dotted);
+    margin-bottom: var(--space-xl);
+  }
+
+  .footer-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-cta p {
+    font-size: 0.95rem;
+    color: var(--gray-600);
+    margin: 0;
+  }
+
+  .back-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    color: var(--accent-dark);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .article-header {
+      padding: var(--space-2xl) 0 var(--space-lg);
+    }
+
+    .container-narrow,
+    .hero-image-container {
+      padding: 0 var(--space-md);
+    }
+
+    .footer-cta {
+      flex-direction: column;
+      gap: var(--space-md);
+      text-align: center;
+    }
+  }
+</style>

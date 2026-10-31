@@ -2,133 +2,178 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title="Contact Us - Munex" description="Get in touch with the Munex team. Questions, feedback, or partnership inquiries welcome." />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="prose">
-					<h1>Contact Us</h1>
-					<p>
-						We'd love to hear from you! Whether you have a question about our reviews, 
-						want to suggest a tool for us to cover, or have feedback about our content, 
-						please reach out.
-					</p>
+  <head>
+    <BaseHead title="Contact — Munex" description="Get in touch with Badal at Munex. Questions, feedback, or tool suggestions welcome." />
+  </head>
+  <body>
+    <Header />
+    
+    <main>
+      <article class="contact-page">
+        <header class="page-header">
+          <div class="container-narrow">
+            <span class="category-label">Contact</span>
+            <h1 class="page-title">Get in Touch</h1>
+            <p class="page-description">
+              Have a question about a tool I reviewed? Want to suggest software for me to cover? 
+              Or just want to say hello? I'd love to hear from you.
+            </p>
+          </div>
+        </header>
 
-					<h2>Get in Touch</h2>
-					
-					<div class="contact-info">
-						<div class="contact-item">
-							<h3>📧 Email</h3>
-							<p>For general inquiries: <a href="mailto:hello@munex.in">hello@munex.in</a></p>
-							<p>For business inquiries: <a href="mailto:business@munex.in">business@munex.in</a></p>
-						</div>
+        <hr class="section-divider" />
 
-						<div class="contact-item">
-							<h3>🐦 Social Media</h3>
-							<p>Follow us on Twitter/X: <a href="https://twitter.com/munexin" target="_blank" rel="noopener">@munexin</a></p>
-						</div>
-					</div>
+        <div class="container-narrow">
+          <div class="email-card">
+            <p class="email-label">Email me directly</p>
+            <a href="mailto:support@munex.in" class="email-link">support@munex.in</a>
+            <p class="email-note">I typically respond within 24-48 hours on business days.</p>
+          </div>
 
-					<h2>What Can We Help With?</h2>
-					<ul>
-						<li><strong>Tool Review Requests</strong> — Have a tool you'd like us to review? Let us know!</li>
-						<li><strong>Content Corrections</strong> — Spotted an error? We appreciate the heads up.</li>
-						<li><strong>Partnership Inquiries</strong> — Interested in collaborating? Reach out to our business email.</li>
-						<li><strong>Advertising</strong> — For advertising opportunities, contact business@munex.in</li>
-						<li><strong>General Feedback</strong> — We're always looking to improve.</li>
-					</ul>
+          <div class="prose">
+            <h2>What I Can Help With</h2>
+            <ul>
+              <li><strong>Tool Suggestions</strong> — Is there a SaaS tool or AI product you'd like me to review? Let me know.</li>
+              <li><strong>Corrections</strong> — Found an error in my content? I appreciate you helping me stay accurate.</li>
+              <li><strong>Collaborations</strong> — Interested in working together? I'm open to collaborations that benefit my readers.</li>
+              <li><strong>General Questions</strong> — Anything else on your mind? Just ask.</li>
+            </ul>
 
-					<h2>Response Time</h2>
-					<p>
-						We aim to respond to all inquiries within 2-3 business days. For urgent matters, 
-						please include "URGENT" in your email subject line.
-					</p>
+            <h2>Before You Reach Out</h2>
+            <p>You might find what you're looking for in my existing content:</p>
+            <ul>
+              <li><a href="/about">About Munex</a> — Who I am and how I work</li>
+              <li><a href="/blog">My Reviews</a> — Browse all my software reviews</li>
+              <li><a href="/privacy">Privacy Policy</a> — How I handle your data</li>
+            </ul>
 
-					<h2>Before You Contact Us</h2>
-					<p>You might find answers to common questions in our content:</p>
-					<ul>
-						<li><a href="/about">About Munex</a> — Learn about our mission and editorial standards</li>
-						<li><a href="/privacy">Privacy Policy</a> — How we handle your data</li>
-						<li><a href="/terms">Terms of Service</a> — Website usage terms</li>
-					</ul>
+            <div class="note-card">
+              <p>I read every email personally. No bots, no templates—just a real human who cares about helping you find the right tools.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
 
-					<h2>Mailing Address</h2>
-					<p>
-						Munex<br>
-						India<br>
-						<em>(Full address available upon request for legitimate business purposes)</em>
-					</p>
-
-					<p class="note">
-						<strong>Note:</strong> We do not provide phone support at this time. 
-						Email is the fastest way to reach us.
-					</p>
-				</div>
-			</article>
-		</main>
-		<Footer />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.prose h1 {
-				font-size: 2.5em;
-				margin-bottom: 0.5em;
-			}
-			.prose h2 {
-				font-size: 1.5em;
-				margin-top: 1.5em;
-				margin-bottom: 0.5em;
-			}
-			.prose h3 {
-				font-size: 1.2em;
-				margin-top: 1em;
-				margin-bottom: 0.5em;
-			}
-			.contact-info {
-				background: rgb(var(--gray-light));
-				padding: 1.5em;
-				border-radius: 8px;
-				margin: 1em 0;
-			}
-			.contact-item {
-				margin-bottom: 1em;
-			}
-			.contact-item:last-child {
-				margin-bottom: 0;
-			}
-			.contact-item h3 {
-				margin-top: 0;
-			}
-			.note {
-				background: #fff3cd;
-				padding: 1em;
-				border-radius: 4px;
-				border-left: 4px solid #ffc107;
-			}
-			.prose ul {
-				padding-left: 1.5em;
-			}
-			.prose li {
-				margin-bottom: 0.5em;
-			}
-		</style>
-	</body>
+    <Footer />
+  </body>
 </html>
+
+<style>
+  .contact-page {
+    padding-bottom: var(--space-2xl);
+  }
+
+  .page-header {
+    padding: var(--space-3xl) 0 var(--space-xl);
+  }
+
+  .container-narrow {
+    max-width: var(--container-narrow);
+    margin: 0 auto;
+    padding: 0 var(--space-xl);
+  }
+
+  .category-label {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-md);
+  }
+
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--black);
+    margin-bottom: var(--space-lg);
+  }
+
+  .page-description {
+    font-size: 1.1rem;
+    color: var(--gray-600);
+    max-width: 550px;
+    margin: 0;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: var(--border-dotted);
+    max-width: var(--container-narrow);
+    margin: 0 auto var(--space-xl);
+    padding: 0 var(--space-xl);
+  }
+
+  .email-card {
+    background-color: var(--gray-50);
+    border-left: 3px solid var(--accent);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+    text-align: center;
+  }
+
+  .email-label {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .email-link {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    color: var(--accent);
+    text-decoration: none;
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .email-link:hover {
+    color: var(--accent-dark);
+    text-decoration: underline;
+  }
+
+  .email-note {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    margin: 0;
+  }
+
+  .note-card {
+    margin-top: var(--space-2xl);
+    padding: var(--space-lg);
+    background-color: #f0fdf4;
+    border-left: 3px solid var(--accent);
+  }
+
+  .note-card p {
+    font-style: italic;
+    color: var(--gray-700);
+    margin: 0;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .page-header {
+      padding: var(--space-2xl) 0 var(--space-lg);
+    }
+
+    .container-narrow {
+      padding: 0 var(--space-md);
+    }
+
+    .email-link {
+      font-size: 1.35rem;
+    }
+  }
+</style>

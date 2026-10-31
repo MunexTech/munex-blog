@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ai.munex.in',
+  site: 'https://munex.in',
   integrations: [mdx(), sitemap()],
 
   fonts: [

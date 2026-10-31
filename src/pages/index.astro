@@ -1,59 +1,307 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import PostCard from '../components/PostCard.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const featuredPost = allPosts[0];
+const recentPosts = allPosts.slice(1, 7);
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to
-				build a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your{' '}
-				<code>astro.config.mjs</code> file. You can customize your setup with{' '}
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like
-				Tailwind, React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>
-					Edit this page in <code>src/pages/index.astro</code>
-				</li>
-				<li>
-					Edit the site header items in <code>src/components/Header.astro</code>
-				</li>
-				<li>
-					Add your name to the footer in <code>src/components/Footer.astro</code>
-				</li>
-				<li>
-					Check out the included blog posts in <code>src/content/blog/</code>
-				</li>
-				<li>
-					Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code>
-				</li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to{' '}
-				<a href="https://docs.astro.build/">read the docs</a> or{' '}
-				<a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out{' '}
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a> by{' '}
-				<a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    
+    {/* WebSite Schema for SEO */}
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Munex",
+      "description": SITE_DESCRIPTION,
+      "url": "https://munex.in",
+      "author": {
+        "@type": "Person",
+        "name": "Badal",
+        "url": "https://munex.in/about"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Munex",
+        "url": "https://munex.in"
+      }
+    })} />
+  </head>
+  <body>
+    <Header />
+    
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-container">
+          <h1 class="hero-title">Find the right software.<br />Skip the marketing fluff.</h1>
+          <p class="hero-description">
+            Honest reviews and comparisons from actual usage—not sponsored rankings 
+            or affiliate-driven recommendations. Just real insights.
+          </p>
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="stats">
+        <div class="stats-container">
+          <div class="stat-item">
+            <span class="stat-number">{allPosts.length}+</span>
+            <span class="stat-label">In-depth reviews</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Tools compared</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Independent</span>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- Latest Reviews Section -->
+      <section class="reviews">
+        <div class="reviews-container">
+          <header class="section-header">
+            <span>Latest Reviews</span>
+          </header>
+
+          {featuredPost && (
+            <div class="featured-post">
+              <PostCard post={featuredPost} featured={true} />
+            </div>
+          )}
+
+          <div class="posts-grid">
+            {recentPosts.map((post) => (
+              <PostCard post={post} />
+            ))}
+          </div>
+
+          <div class="view-all">
+            <a href="/blog" class="view-all-link">
+              View all reviews →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Teaser -->
+      <section class="about-teaser">
+        <div class="about-container">
+          <hr class="section-divider" />
+          <header class="section-header">
+            <span>About Munex</span>
+          </header>
+          <div class="about-content">
+            <p>
+              Munex is run by <strong>Badal</strong>, a software engineer who got tired of 
+              reading reviews that felt more like ads than genuine assessments. Every tool 
+              here is tested hands-on, compared fairly, and reviewed honestly.
+            </p>
+            <a href="/about" class="about-link">Learn more about our approach →</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
 </html>
+
+<style>
+  /* Hero */
+  .hero {
+    padding: var(--space-4xl) 0 var(--space-2xl);
+  }
+
+  .hero-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-xl);
+  }
+
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: var(--space-lg);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    max-width: 600px;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* Stats */
+  .stats {
+    padding: var(--space-xl) 0;
+  }
+
+  .stats-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .stat-number {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border-dotted);
+    border-left: var(--border-dotted);
+  }
+
+  /* Section Divider */
+  .section-divider {
+    border: none;
+    border-top: var(--border-dotted);
+    max-width: var(--container-max);
+    margin: var(--space-2xl) auto;
+    padding: 0 var(--space-xl);
+  }
+
+  /* Reviews Section */
+  .reviews {
+    padding: var(--space-xl) 0;
+  }
+
+  .reviews-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-xl);
+  }
+
+  .featured-post {
+    margin-bottom: var(--space-xl);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+
+  .view-all {
+    text-align: center;
+    padding-top: var(--space-lg);
+  }
+
+  .view-all-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .view-all-link:hover {
+    color: var(--accent-dark);
+  }
+
+  /* About Teaser */
+  .about-teaser {
+    padding: var(--space-xl) 0 var(--space-2xl);
+  }
+
+  .about-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-xl);
+  }
+
+  .about-content {
+    max-width: 600px;
+  }
+
+  .about-content p {
+    font-size: 1rem;
+    color: var(--gray-600);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+
+  .about-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .about-link:hover {
+    color: var(--accent-dark);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+    }
+
+    .hero-container,
+    .stats-container,
+    .reviews-container,
+    .about-container {
+      padding: 0 var(--space-md);
+    }
+
+    .stats-container {
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+    }
+
+    .stat-divider {
+      display: none;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+  }
+</style>
