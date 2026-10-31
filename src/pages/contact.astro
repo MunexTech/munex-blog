@@ -1,0 +1,134 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Contact Us - Munex" description="Get in touch with the Munex team. Questions, feedback, or partnership inquiries welcome." />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="prose">
+					<h1>Contact Us</h1>
+					<p>
+						We'd love to hear from you! Whether you have a question about our reviews, 
+						want to suggest a tool for us to cover, or have feedback about our content, 
+						please reach out.
+					</p>
+
+					<h2>Get in Touch</h2>
+					
+					<div class="contact-info">
+						<div class="contact-item">
+							<h3>📧 Email</h3>
+							<p>For general inquiries: <a href="mailto:hello@munex.in">hello@munex.in</a></p>
+							<p>For business inquiries: <a href="mailto:business@munex.in">business@munex.in</a></p>
+						</div>
+
+						<div class="contact-item">
+							<h3>🐦 Social Media</h3>
+							<p>Follow us on Twitter/X: <a href="https://twitter.com/munexin" target="_blank" rel="noopener">@munexin</a></p>
+						</div>
+					</div>
+
+					<h2>What Can We Help With?</h2>
+					<ul>
+						<li><strong>Tool Review Requests</strong> — Have a tool you'd like us to review? Let us know!</li>
+						<li><strong>Content Corrections</strong> — Spotted an error? We appreciate the heads up.</li>
+						<li><strong>Partnership Inquiries</strong> — Interested in collaborating? Reach out to our business email.</li>
+						<li><strong>Advertising</strong> — For advertising opportunities, contact business@munex.in</li>
+						<li><strong>General Feedback</strong> — We're always looking to improve.</li>
+					</ul>
+
+					<h2>Response Time</h2>
+					<p>
+						We aim to respond to all inquiries within 2-3 business days. For urgent matters, 
+						please include "URGENT" in your email subject line.
+					</p>
+
+					<h2>Before You Contact Us</h2>
+					<p>You might find answers to common questions in our content:</p>
+					<ul>
+						<li><a href="/about">About Munex</a> — Learn about our mission and editorial standards</li>
+						<li><a href="/privacy">Privacy Policy</a> — How we handle your data</li>
+						<li><a href="/terms">Terms of Service</a> — Website usage terms</li>
+					</ul>
+
+					<h2>Mailing Address</h2>
+					<p>
+						Munex<br>
+						India<br>
+						<em>(Full address available upon request for legitimate business purposes)</em>
+					</p>
+
+					<p class="note">
+						<strong>Note:</strong> We do not provide phone support at this time. 
+						Email is the fastest way to reach us.
+					</p>
+				</div>
+			</article>
+		</main>
+		<Footer />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--gray-dark));
+			}
+			.prose h1 {
+				font-size: 2.5em;
+				margin-bottom: 0.5em;
+			}
+			.prose h2 {
+				font-size: 1.5em;
+				margin-top: 1.5em;
+				margin-bottom: 0.5em;
+			}
+			.prose h3 {
+				font-size: 1.2em;
+				margin-top: 1em;
+				margin-bottom: 0.5em;
+			}
+			.contact-info {
+				background: rgb(var(--gray-light));
+				padding: 1.5em;
+				border-radius: 8px;
+				margin: 1em 0;
+			}
+			.contact-item {
+				margin-bottom: 1em;
+			}
+			.contact-item:last-child {
+				margin-bottom: 0;
+			}
+			.contact-item h3 {
+				margin-top: 0;
+			}
+			.note {
+				background: #fff3cd;
+				padding: 1em;
+				border-radius: 4px;
+				border-left: 4px solid #ffc107;
+			}
+			.prose ul {
+				padding-left: 1.5em;
+			}
+			.prose li {
+				margin-bottom: 0.5em;
+			}
+		</style>
+	</body>
+</html>
