@@ -18,6 +18,7 @@ function isActive(href: string): boolean {
 <header class="header">
   <div class="header-inner">
     <a href="/" class="logo">
+      <img src="/favicon.png" alt="Munex logo" class="logo-icon" />
       {SITE_TITLE}
     </a>
     
@@ -85,11 +86,20 @@ function isActive(href: string): boolean {
   }
 
   .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text);
     text-decoration: none;
     letter-spacing: -0.02em;
+  }
+
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
   }
 
   .logo:hover {
