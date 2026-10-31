@@ -45,10 +45,10 @@ const recentPosts = allPosts.slice(1, 7);
       <!-- Hero Section -->
       <section class="hero">
         <div class="hero-container">
-          <h1 class="hero-title">Find the right software.<br />Skip the marketing fluff.</h1>
+          <p class="hero-intro">I review software tools honestly. No fluff.</p>
+          <h1 class="hero-title">Find the right software for your work.</h1>
           <p class="hero-description">
-            Honest reviews and comparisons from actual usage—not sponsored rankings 
-            or affiliate-driven recommendations. Just real insights.
+            Real reviews from actual usage — not sponsored rankings or affiliate-driven recommendations.
           </p>
         </div>
       </section>
@@ -73,7 +73,7 @@ const recentPosts = allPosts.slice(1, 7);
         </div>
       </section>
 
-      <hr class="section-divider" />
+      <hr class="divider container" />
 
       <!-- Latest Reviews Section -->
       <section class="reviews">
@@ -105,7 +105,7 @@ const recentPosts = allPosts.slice(1, 7);
       <!-- About Teaser -->
       <section class="about-teaser">
         <div class="about-container">
-          <hr class="section-divider" />
+          <hr class="divider" />
           <header class="section-header">
             <span>About Munex</span>
           </header>
@@ -137,20 +137,29 @@ const recentPosts = allPosts.slice(1, 7);
     padding: 0 var(--space-xl);
   }
 
+  .hero-intro {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--primary);
+    margin-bottom: var(--space-md);
+    letter-spacing: 0.02em;
+  }
+
   .hero-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 400;
-    line-height: 1.1;
-    color: var(--black);
+    font-family: var(--font-sans);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
     margin-bottom: var(--space-lg);
     letter-spacing: -0.02em;
+    max-width: 700px;
   }
 
   .hero-description {
     font-size: 1.125rem;
-    color: var(--gray-600);
-    max-width: 600px;
+    color: var(--text-muted);
+    max-width: 550px;
     line-height: 1.7;
     margin: 0;
   }
@@ -178,13 +187,13 @@ const recentPosts = allPosts.slice(1, 7);
   .stat-number {
     font-family: var(--font-sans);
     font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--accent);
+    font-weight: 700;
+    color: var(--primary);
   }
 
   .stat-label {
-    font-size: 0.8rem;
-    color: var(--gray-500);
+    font-size: 0.75rem;
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
@@ -192,16 +201,19 @@ const recentPosts = allPosts.slice(1, 7);
   .stat-divider {
     width: 1px;
     height: 40px;
-    background: var(--border-dotted);
-    border-left: var(--border-dotted);
+    background-color: var(--border);
   }
 
-  /* Section Divider */
-  .section-divider {
+  /* Divider */
+  .divider {
     border: none;
-    border-top: var(--border-dotted);
-    max-width: var(--container-max);
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
     margin: var(--space-2xl) auto;
+  }
+
+  .container {
+    max-width: var(--container-max);
     padding: 0 var(--space-xl);
   }
 
@@ -235,13 +247,13 @@ const recentPosts = allPosts.slice(1, 7);
   .view-all-link {
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--primary);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color var(--transition-fast);
   }
 
   .view-all-link:hover {
-    color: var(--accent-dark);
+    color: var(--primary-dark);
   }
 
   /* About Teaser */
@@ -256,12 +268,12 @@ const recentPosts = allPosts.slice(1, 7);
   }
 
   .about-content {
-    max-width: 600px;
+    max-width: 550px;
   }
 
   .about-content p {
     font-size: 1rem;
-    color: var(--gray-600);
+    color: var(--text-muted);
     line-height: 1.7;
     margin-bottom: var(--space-md);
   }
@@ -269,12 +281,12 @@ const recentPosts = allPosts.slice(1, 7);
   .about-link {
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--primary);
     text-decoration: none;
   }
 
   .about-link:hover {
-    color: var(--accent-dark);
+    color: var(--primary-dark);
   }
 
   /* Mobile */

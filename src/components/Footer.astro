@@ -1,6 +1,5 @@
 ---
-const today = new Date();
-const year = today.getFullYear();
+const year = new Date().getFullYear();
 
 const footerLinks = [
   { href: '/about', label: 'About' },
@@ -11,12 +10,12 @@ const footerLinks = [
 ---
 
 <footer class="footer">
-  <div class="footer-container">
+  <div class="footer-inner">
     <hr class="footer-divider" />
     
     <div class="footer-content">
       <div class="footer-brand">
-        <span class="footer-logo">Munex</span>
+        <a href="/" class="footer-logo">Munex</a>
         <p class="footer-tagline">Honest software reviews. No fluff.</p>
       </div>
       
@@ -29,9 +28,7 @@ const footerLinks = [
 
     <div class="footer-bottom">
       <p class="copyright">© {year} Munex. All rights reserved.</p>
-      <p class="contact-email">
-        <a href="mailto:support@munex.in">support@munex.in</a>
-      </p>
+      <a href="mailto:support@munex.in" class="contact-link">support@munex.in</a>
     </div>
   </div>
 </footer>
@@ -42,7 +39,7 @@ const footerLinks = [
     padding-bottom: var(--space-2xl);
   }
 
-  .footer-container {
+  .footer-inner {
     max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 var(--space-xl);
@@ -50,7 +47,8 @@ const footerLinks = [
 
   .footer-divider {
     border: none;
-    border-top: var(--border-dotted);
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
     margin-bottom: var(--space-2xl);
   }
 
@@ -59,7 +57,7 @@ const footerLinks = [
     justify-content: space-between;
     align-items: flex-start;
     gap: var(--space-2xl);
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-xl);
   }
 
   .footer-brand {
@@ -67,33 +65,38 @@ const footerLinks = [
   }
 
   .footer-logo {
-    font-family: var(--font-serif);
-    font-size: 1.25rem;
-    color: var(--black);
-    display: block;
-    margin-bottom: var(--space-sm);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .footer-logo:hover {
+    color: var(--primary);
   }
 
   .footer-tagline {
     font-size: 0.875rem;
-    color: var(--gray-500);
+    color: var(--text-muted);
     margin: 0;
   }
 
   .footer-nav {
     display: flex;
-    gap: var(--space-xl);
+    gap: var(--space-lg);
   }
 
   .footer-link {
     font-size: 0.875rem;
-    color: var(--gray-600);
+    color: var(--text-muted);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color var(--transition-fast);
   }
 
   .footer-link:hover {
-    color: var(--accent);
+    color: var(--primary);
   }
 
   .footer-bottom {
@@ -101,32 +104,27 @@ const footerLinks = [
     justify-content: space-between;
     align-items: center;
     padding-top: var(--space-lg);
-    border-top: 1px solid var(--gray-100);
+    border-top: 1px solid var(--border);
   }
 
   .copyright {
     font-size: 0.8rem;
-    color: var(--gray-400);
+    color: var(--text-muted);
     margin: 0;
   }
 
-  .contact-email {
-    margin: 0;
-  }
-
-  .contact-email a {
+  .contact-link {
     font-size: 0.8rem;
-    color: var(--gray-500);
+    color: var(--text-muted);
     text-decoration: none;
   }
 
-  .contact-email a:hover {
-    color: var(--accent);
+  .contact-link:hover {
+    color: var(--primary);
   }
 
-  /* Mobile */
-  @media (max-width: 768px) {
-    .footer-container {
+  @media (max-width: 640px) {
+    .footer-inner {
       padding: 0 var(--space-md);
     }
 
@@ -137,7 +135,7 @@ const footerLinks = [
 
     .footer-nav {
       flex-wrap: wrap;
-      gap: var(--space-md) var(--space-lg);
+      gap: var(--space-md);
     }
 
     .footer-bottom {

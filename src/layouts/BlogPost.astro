@@ -67,7 +67,7 @@ const category = getCategory(title);
       <article class="article">
         <header class="article-header">
           <div class="container-narrow">
-            <span class="category-label">{category}</span>
+            <span class="tag">{category}</span>
             <h1 class="article-title">{title}</h1>
             <div class="article-meta">
               <FormattedDate date={pubDate} />
@@ -131,30 +131,33 @@ const category = getCategory(title);
     padding: 0 var(--space-xl);
   }
 
-  .category-label {
+  .tag {
     display: inline-block;
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--primary);
+    background-color: rgba(13, 148, 136, 0.1);
+    padding: 0.25em 0.75em;
+    border-radius: 4px;
     margin-bottom: var(--space-md);
   }
 
   .article-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 5vw, 2.75rem);
-    font-weight: 400;
+    font-family: var(--font-sans);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
     line-height: 1.2;
-    color: var(--black);
+    color: var(--text);
     margin-bottom: var(--space-lg);
     letter-spacing: -0.02em;
   }
 
   .article-meta {
     font-size: 0.9rem;
-    color: var(--gray-500);
+    color: var(--text-muted);
   }
 
   .updated {
@@ -187,7 +190,8 @@ const category = getCategory(title);
 
   .footer-divider {
     border: none;
-    border-top: var(--border-dotted);
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
     margin-bottom: var(--space-xl);
   }
 
@@ -199,19 +203,19 @@ const category = getCategory(title);
 
   .footer-cta p {
     font-size: 0.95rem;
-    color: var(--gray-600);
+    color: var(--text-muted);
     margin: 0;
   }
 
   .back-link {
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--primary);
     text-decoration: none;
   }
 
   .back-link:hover {
-    color: var(--accent-dark);
+    color: var(--primary-dark);
   }
 
   /* Mobile */
