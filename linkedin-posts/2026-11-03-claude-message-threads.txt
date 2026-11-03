@@ -1,0 +1,56 @@
+═══════════════════════════════════════════════════════════════════
+COPY EVERYTHING BELOW THIS LINE FOR LINKEDIN:
+═══════════════════════════════════════════════════════════════════
+
+If you're building AI agents with Claude, this changes everything.
+
+Anthropic just launched 𝗠𝗲𝘀𝘀𝗮𝗴𝗲 𝗧𝗵𝗿𝗲𝗮𝗱𝘀 in public beta.
+
+The result: 35% faster response times for long-running sessions.
+
+The problem it solves:
+
+Every Claude API call currently requires sending the ENTIRE conversation history. For a 500K token context, that means:
+→ Serializing hundreds of thousands of tokens
+→ Sending them over the network
+→ Waiting for full processing before response
+
+Even a simple "yes or no" follow-up requires the whole history.
+
+Message Threads fix:
+
+1. First call creates a thread ID
+2. Subsequent calls send ONLY new messages
+3. Claude maintains state server-side
+
+Performance gains by context size:
+• 10K tokens: 12% faster
+• 100K tokens: 28% faster
+• 500K-1M tokens: ~35% faster
+
+Best for:
+→ Coding agents analyzing large repos
+→ Document processing (legal, financial)
+→ Long customer support conversations
+→ Multi-step research workflows
+
+Threads expire after 5 minutes of inactivity — designed for active sessions, not persistent storage.
+
+No extra cost. Available on Claude Platform, AWS Bedrock, and Google Cloud.
+
+Implementation guide:
+https://munex.in/blog/claude-api-message-threads-beta-2026/
+
+Building anything with Claude? This is worth implementing.
+
+#Claude #AI #Anthropic #AIAgents #Developer
+
+═══════════════════════════════════════════════════════════════════
+STOP COPYING HERE
+═══════════════════════════════════════════════════════════════════
+
+Blog URL: https://munex.in/blog/claude-api-message-threads-beta-2026/
+Created: November 3, 2026
+Best time to post: Wednesday, 8-10 AM IST
+
+Suggested image: Speed/performance chart or Claude logo with threading visualization
