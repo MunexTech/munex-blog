@@ -1,11 +1,6 @@
-# LinkedIn Post: Best Note-Taking Apps 2026: Obsidian vs Notion vs Roam Research
-
-**Blog URL:** https://munex.in/blog/best-note-taking-app-2026
-**Created:** October 31, 2026
-
----
-
-## Post Content (Copy this):
+═══════════════════════════════════════════════════════════════════
+COPY EVERYTHING BELOW THIS LINE FOR LINKEDIN:
+═══════════════════════════════════════════════════════════════════
 
 I have notes from 2019 that I still reference weekly.
 
@@ -53,21 +48,12 @@ What's your note-taking system?
 
 #Productivity #NoteTaking #Obsidian #Notion #KnowledgeManagement
 
----
+═══════════════════════════════════════════════════════════════════
+STOP COPYING HERE
+═══════════════════════════════════════════════════════════════════
 
-## Suggested Image
+Blog URL: https://munex.in/blog/best-note-taking-app-2026
+Created: October 31, 2026
+Best time to post: Tuesday, 8-10 AM IST
 
-Use a graphic showing:
-- Notes/documents with connected lines (graph visualization)
-- Three platform logos (Obsidian, Notion, Roam)
-- Or a brain/second brain concept visual
-
-## Hashtags (included in post above)
-
-#Productivity #NoteTaking #Obsidian #Notion #KnowledgeManagement
-
-## Best Time to Post
-
-- Weekdays: 8-10 AM or 5-6 PM IST
-- Tuesday-Thursday perform best
-- Recommended: Tuesday for productivity-focused audience
+Suggested image: Notes with connected graph lines (second brain concept)
